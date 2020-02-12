@@ -281,15 +281,11 @@ export default class Grid {
 
         let k = this.interval / 1000
         let diff = delta * k * this.data.length
-        if (event.originalEvent.ctrlKey) {
-            let offset = event.originalEvent.offsetX
-            let diff_x = offset / (this.canvas.width-1) * diff
-            let diff_y = diff - diff_x
-            this.range[0] -= diff_x
-            this.range[1] += diff_y
-        } else {
-            this.range[0] -= diff
-        }
+        let offset = event.originalEvent.offsetX
+        let diff_x = offset / (this.canvas.width-1) * diff
+        let diff_y = diff - diff_x
+        this.range[0] -= diff_x
+        this.range[1] += diff_y
 
         this.change_range()
 
